@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddRazorPages();  // Flask の render_template を使えるようにする
 builder.Services.AddOpenApi();
 
 // Flask の app で直接 anthropic.Anthropic() するのと違い、
@@ -33,4 +34,5 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthorization();
 app.MapControllers();
+app.MapRazorPages();  // Razor Pages のルーティングを有効化
 app.Run();
